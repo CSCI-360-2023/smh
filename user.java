@@ -1,11 +1,11 @@
 public class user {
-    // searchEvent(eventId: string)
     String username;
     String password;
     String firstName;
     String lastName;
     String email;
     String[] cart;
+    
 
     public boolean loginUser(String username, String password) {
         // takes user and password and finds if the the pairing is valid
