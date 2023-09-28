@@ -1,5 +1,6 @@
 public class event {
     String[] foundEvents;
+    ticket[][] seatMap;
     
     public int[] searchTickets(String[] events) {
         // calls the tickets class to get the ticketIDs of the events returned from original event search
