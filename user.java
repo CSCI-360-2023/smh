@@ -5,6 +5,14 @@ public class user {
     String lastName;
     String email;
     String[] cart;
+
+    public user(String userString, String passString, String firstString, String lastString, String emailString) {
+        username = userString;
+        password = passString;
+        firstName = firstString;
+        lastName = lastString;
+        email = emailString;
+    }
     
 
     public boolean loginUser(String username, String password) {
