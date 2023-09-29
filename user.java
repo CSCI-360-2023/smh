@@ -5,6 +5,7 @@ public class user {
     String lastName;
     String email;
     String[] cart;
+    static user[] userDatabase = new user[1];
 
     public user(String userString, String passString, String firstString, String lastString, String emailString) {
         username = userString;
@@ -12,6 +13,11 @@ public class user {
         firstName = firstString;
         lastName = lastString;
         email = emailString;
+    }
+
+    public user(String userString, String passString) {
+        username = userString;
+        password = passString;
     }
     
 
@@ -45,5 +51,10 @@ public class user {
         // displays tickets returned after purchasing
     }
 
+    static {
+        // database for now (for testing)
+        user exampleUser = new user("joe123", "blahblah");
+        userDatabase[0] = exampleUser;
+    }
 
 }
