@@ -1,7 +1,12 @@
 public class controller {
+    user currUser;
+
+    public controller(user currentUser) {
+        currUser = currentUser;
+    }
 
     // example for testing
-    static String username = "joe123";
+    static String username = "joe12";
     static String password = "blahblah";
 
     static user credentials = new user(username, password);
