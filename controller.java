@@ -1,4 +1,4 @@
-public class constructor {
+public class controller {
 
     // example for testing
     static String username = "joe123";
