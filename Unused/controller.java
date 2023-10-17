@@ -1,3 +1,6 @@
+import java.io.*;
+import java.awt.Desktop;
+
 public class controller {
     user currUser;
 
@@ -26,7 +29,10 @@ public class controller {
         return credentials;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        File logInFile = new File("login_page.html");
+        Desktop.getDesktop().browse(logInFile.toURI());
 
         user foundUser = loginUser(credentials);
 
