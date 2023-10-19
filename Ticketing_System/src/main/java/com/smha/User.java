@@ -8,7 +8,7 @@ public class User {
     String email;
     String[] cart;
     static User[] userDatabase = new User[1];
-    static User currUser;
+    static User currUser = null;
 
     public User(String userString, String passString, String firstString, String lastString, String emailString) {
         username = userString;
@@ -55,9 +55,6 @@ public class User {
     }
 
     static {
-    	// current logged in user
-    	User currUser = new User(null, null);
-    	
         // database for now (for testing)
     	userDatabase[0] = new User("joe123", "blahblah");
     }

@@ -12,9 +12,7 @@ public class CreateUserServlet extends HttpServlet{
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		User newUser = new User(req.getParameter("username"), req.getParameter("password"), req.getParameter("first_name"), req.getParameter("last_name"), req.getParameter("email"));
-		
-//		System.out.println("User Created!!");
-		
+				
 		User.userDatabase = Arrays.copyOf(User.userDatabase, User.userDatabase.length + 1);
 		
 		User.userDatabase[User.userDatabase.length - 1] = newUser;
