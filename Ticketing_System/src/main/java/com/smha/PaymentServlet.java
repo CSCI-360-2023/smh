@@ -17,7 +17,7 @@ public class PaymentServlet extends HttpServlet{
 		int paymentID = rand.nextInt((9999 - 1000) + 1) + 1000;
 		Payment transaction = new Payment(paymentID);
 		
-		Payment.securityCheck(transaction, Integer.parseInt(req.getParameter("card_number")), Integer.parseInt(req.getParameter("card_pin")), req.getParameter("expiration_date"));
+		Payment.securityCheck(transaction, req.getParameter("card_number"), Integer.parseInt(req.getParameter("card_pin")), req.getParameter("expiration_date"));
 		
 		PrintWriter out = res.getWriter();
 		

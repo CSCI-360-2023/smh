@@ -10,7 +10,7 @@ public class User {
     Ticket[] purchasedTickets;
     static User[] userDatabase = new User[1];
     static User currUser = null;
-    int cardNum = -1; // 16 digits
+    String cardNum = null; // 16 digits
     int pinNum;
     String exDate;
 
