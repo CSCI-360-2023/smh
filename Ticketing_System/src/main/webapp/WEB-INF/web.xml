@@ -20,4 +20,14 @@
   	<servlet-name>create_user</servlet-name>
   	<url-pattern>/create_user</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>payment</servlet-name>
+  	<servlet-class>com.smha.PaymentServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>payment</servlet-name>
+  	<url-pattern>/payment</url-pattern>
+  </servlet-mapping>
 </web-app>

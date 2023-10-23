@@ -6,9 +6,13 @@ public class User {
     String firstName;
     String lastName;
     String email;
-    String[] cart;
+    Ticket[] cart;
+    Ticket[] purchasedTickets;
     static User[] userDatabase = new User[1];
     static User currUser = null;
+    int cardNum = -1; // 16 digits
+    int pinNum;
+    String exDate;
 
     public User(String userString, String passString, String firstString, String lastString, String emailString) {
         username = userString;
@@ -24,11 +28,11 @@ public class User {
     }
     
 
-    public boolean loginUser(String username, String password) {
-        // takes user and password and finds if the the pairing is valid
-        boolean confirm = false;
-        return confirm;
-    }
+//    public boolean loginUser(String username, String password) {
+//        // takes user and password and finds if the the pairing is valid
+//        boolean confirm = false;
+//        return confirm;
+//    }
 
     public boolean registerUser(String username, String password, String firstName, String lastName, String email) {
         // creates a new user class and stores into the db using the parameters
