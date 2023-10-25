@@ -31,7 +31,7 @@ public class Payment {
 	
 	// must take card info input and pass as payment object
 	public static boolean securityCheck(Payment payOb, HttpServletResponse res) {
-		User.currUser = new User("ahusted", "1234"); // Testing purposes only
+		User.currUser = new User("stantheman", "1234"); // Testing purposes only
 		
 		System.out.println("cardNum: " + payOb.cardNum + " pinNum: " + payOb.pinNum + " exDate: " + payOb.exDate);
 		
@@ -52,24 +52,28 @@ public class Payment {
 			
 			rs.next();
 			
+			User.currUser.cardNum = rs.getString("cardNum");
+			User.currUser.pinNum = rs.getInt("pinNum");
+			User.currUser.exDate = rs.getString("cardNum");
+			
 			if (rs.getString("cardNum") == (null)) {
-				System.out.println("HERE!");
-				User.currUser.cardNum = payOb.cardNum;
-				User.currUser.pinNum = payOb.pinNum;
-				User.currUser.exDate = payOb.exDate;
 				
 				runPayment(payOb, res);
 				
-				return true;
+				payOb.status = true;
+				
+				return payOb.status;
 			}
-			if (User.currUser.cardNum.equals(payOb.cardNum)) {
+			else if (User.currUser.cardNum.equals(payOb.cardNum)) {
 				if (User.currUser.pinNum == payOb.pinNum & User.currUser.exDate.equals(payOb.exDate)) {
 					runPayment(payOb, res);
 					
-					return true;
+					payOb.status = true;
+					
+					return payOb.status;
 				}
 				else {
-					return false;
+					return payOb.status;
 				}
 			}
 			else {
@@ -79,7 +83,9 @@ public class Payment {
 				
 				runPayment(payOb, res);
 				
-				return true;
+				payOb.status = true;
+				
+				return payOb.status;
 			}
 			
 		} catch (Exception e) {e.printStackTrace(); return false;}
@@ -87,27 +93,35 @@ public class Payment {
 	
 	public static void runPayment(Payment payOb, HttpServletResponse res) throws IOException {
 		
-		PrintWriter out = res.getWriter();
-		
 		Connection con = null;
-		PreparedStatement stmt = null;
+		PreparedStatement stmtU = null;
+		PreparedStatement stmtT = null;
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
     		// changes depending on your server
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3309/ticketing_system", "root", "1234");
 			
-			stmt = con.prepareStatement("INSERT INTO transactions (username, eventID, ticketID, amount, cardNum, pinNum, exDate) VALUES (?, ?, ?, ?, ?, ?, ?)");
+			stmtU = con.prepareStatement("UPDATE users SET cardNum = ?, pinNum = ?, exDate = ? WHERE username = ?");
 			
-			stmt.setString(1, User.currUser.username);
-			stmt.setInt(2, payOb.eventID);
-			stmt.setInt(3, payOb.ticketID);
-			stmt.setDouble(4, payOb.amount);
-			stmt.setString(5, payOb.cardNum);
-			stmt.setInt(6, payOb.pinNum);
-			stmt.setString(7, payOb.exDate);
+			stmtU.setString(1, payOb.cardNum);
+			stmtU.setInt(2, payOb.pinNum);
+			stmtU.setString(3, payOb.exDate);
+			stmtU.setString(4, User.currUser.username);
 			
-			stmt.executeUpdate();
+			stmtU.executeUpdate();
+			
+			stmtT = con.prepareStatement("INSERT INTO transactions (username, eventID, ticketID, amount, cardNum, pinNum, exDate) VALUES (?, ?, ?, ?, ?, ?, ?)");
+			
+			stmtT.setString(1, User.currUser.username);
+			stmtT.setInt(2, payOb.eventID);
+			stmtT.setInt(3, payOb.ticketID);
+			stmtT.setDouble(4, payOb.amount);
+			stmtT.setString(5, payOb.cardNum);
+			stmtT.setInt(6, payOb.pinNum);
+			stmtT.setString(7, payOb.exDate);
+			
+			stmtT.executeUpdate();
 			
 		} catch (Exception e) {e.printStackTrace();}
 	}

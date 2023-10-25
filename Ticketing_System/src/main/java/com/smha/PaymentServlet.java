@@ -21,9 +21,11 @@ public class PaymentServlet extends HttpServlet{
 		
 		if (paymentStatus == true) {
 			out.println("Payment Successful!");
+			res.sendRedirect("payment_confirm.html");
 		}
 		else {
 			out.println("Payment failed.");
+			res.sendRedirect("payment_form.html");
 		}
 	}
 }

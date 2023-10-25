@@ -31,7 +31,7 @@ public class Payment {
 	
 	// must take card info input and pass as payment object
 	public static boolean securityCheck(Payment payOb, HttpServletResponse res) {
-		User.currUser = new User("ahusted", "1234"); // Testing purposes only
+		User.currUser = new User("stantheman", "1234"); // Testing purposes only
 		
 		System.out.println("cardNum: " + payOb.cardNum + " pinNum: " + payOb.pinNum + " exDate: " + payOb.exDate);
 		
@@ -60,16 +60,20 @@ public class Payment {
 				
 				runPayment(payOb, res);
 				
-				return true;
+				payOb.status = true;
+				
+				return payOb.status;
 			}
 			else if (User.currUser.cardNum.equals(payOb.cardNum)) {
 				if (User.currUser.pinNum == payOb.pinNum & User.currUser.exDate.equals(payOb.exDate)) {
 					runPayment(payOb, res);
 					
-					return true;
+					payOb.status = true;
+					
+					return payOb.status;
 				}
 				else {
-					return false;
+					return payOb.status;
 				}
 			}
 			else {
@@ -79,7 +83,9 @@ public class Payment {
 				
 				runPayment(payOb, res);
 				
-				return true;
+				payOb.status = true;
+				
+				return payOb.status;
 			}
 			
 		} catch (Exception e) {e.printStackTrace(); return false;}
