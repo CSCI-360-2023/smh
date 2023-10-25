@@ -52,17 +52,17 @@ public class Payment {
 			
 			rs.next();
 			
-			User.currUser.cardNum = rs.getString("cardNum");
-			User.currUser.pinNum = rs.getInt("pinNum");
-			User.currUser.exDate = rs.getString("cardNum");
-			
 			if (rs.getString("cardNum") == (null)) {
+				System.out.println("HERE!");
+				User.currUser.cardNum = payOb.cardNum;
+				User.currUser.pinNum = payOb.pinNum;
+				User.currUser.exDate = payOb.exDate;
 				
 				runPayment(payOb, res);
 				
 				return true;
 			}
-			else if (User.currUser.cardNum.equals(payOb.cardNum)) {
+			if (User.currUser.cardNum.equals(payOb.cardNum)) {
 				if (User.currUser.pinNum == payOb.pinNum & User.currUser.exDate.equals(payOb.exDate)) {
 					runPayment(payOb, res);
 					
@@ -87,35 +87,27 @@ public class Payment {
 	
 	public static void runPayment(Payment payOb, HttpServletResponse res) throws IOException {
 		
+		PrintWriter out = res.getWriter();
+		
 		Connection con = null;
-		PreparedStatement stmtU = null;
-		PreparedStatement stmtT = null;
+		PreparedStatement stmt = null;
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
     		// changes depending on your server
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3309/ticketing_system", "root", "1234");
 			
-			stmtU = con.prepareStatement("UPDATE users SET cardNum = ?, pinNum = ?, exDate = ? WHERE username = ?");
+			stmt = con.prepareStatement("INSERT INTO transactions (username, eventID, ticketID, amount, cardNum, pinNum, exDate) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			
-			stmtU.setString(1, payOb.cardNum);
-			stmtU.setInt(2, payOb.pinNum);
-			stmtU.setString(3, payOb.exDate);
-			stmtU.setString(4, User.currUser.username);
+			stmt.setString(1, User.currUser.username);
+			stmt.setInt(2, payOb.eventID);
+			stmt.setInt(3, payOb.ticketID);
+			stmt.setDouble(4, payOb.amount);
+			stmt.setString(5, payOb.cardNum);
+			stmt.setInt(6, payOb.pinNum);
+			stmt.setString(7, payOb.exDate);
 			
-			stmtU.executeUpdate();
-			
-			stmtT = con.prepareStatement("INSERT INTO transactions (username, eventID, ticketID, amount, cardNum, pinNum, exDate) VALUES (?, ?, ?, ?, ?, ?, ?)");
-			
-			stmtT.setString(1, User.currUser.username);
-			stmtT.setInt(2, payOb.eventID);
-			stmtT.setInt(3, payOb.ticketID);
-			stmtT.setDouble(4, payOb.amount);
-			stmtT.setString(5, payOb.cardNum);
-			stmtT.setInt(6, payOb.pinNum);
-			stmtT.setString(7, payOb.exDate);
-			
-			stmtT.executeUpdate();
+			stmt.executeUpdate();
 			
 		} catch (Exception e) {e.printStackTrace();}
 	}

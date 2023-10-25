@@ -19,6 +19,11 @@ public class Event {
     }
     
     static {
-    	eventDatabase[0] = new Event(null, null);
+    	Ticket[][] seatMapEx = new Ticket[1][1];
+    	Ticket rowOneSeatOne = new Ticket("001", "CofC M Basketball vs Hofstra", 1, 1, 45.52);
+    	seatMapEx[0][0] = rowOneSeatOne;
+    	Event eventEx = new Event(seatMapEx, seatMapEx[0][0].event);
+    	
+    	eventDatabase[0] = eventEx;
     }
 }

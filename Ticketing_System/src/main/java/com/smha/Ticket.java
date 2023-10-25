@@ -5,8 +5,10 @@ public class Ticket {
     int age; // What is the purpose of age?? Excluded from constructor for time being.
     String event;
     String ticketID;
+    String status;
     int row;
     int seat;
+    static Ticket[] ticketDatabase = new Ticket[2];
     
     public Ticket(String ID, String eventString, int rowNum, int seatNum, Double price) {
     	ticketID = ID;
@@ -46,5 +48,9 @@ public class Ticket {
 
     public void displayTicket() {
         // displays ticket to UI to user 
+    }
+    
+    static {
+    	
     }
 }
