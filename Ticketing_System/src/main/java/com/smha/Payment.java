@@ -30,8 +30,8 @@ public class Payment {
 	}
 	
 	// must take card info input and pass as payment object
-	public static boolean securityCheck(Payment payOb, HttpServletResponse res) {
-		User.currUser = new User("stantheman", "1234"); // Testing purposes only
+	public static boolean securityCheck(Payment payOb) {
+//		User.currUser = new User("stantheman", "1234"); // Testing purposes only
 		
 		System.out.println("cardNum: " + payOb.cardNum + " pinNum: " + payOb.pinNum + " exDate: " + payOb.exDate);
 		
@@ -58,7 +58,7 @@ public class Payment {
 			
 			if (rs.getString("cardNum") == (null)) {
 				
-				runPayment(payOb, res);
+				runPayment(payOb);
 				
 				payOb.status = true;
 				
@@ -66,7 +66,7 @@ public class Payment {
 			}
 			else if (User.currUser.cardNum.equals(payOb.cardNum)) {
 				if (User.currUser.pinNum == payOb.pinNum & User.currUser.exDate.equals(payOb.exDate)) {
-					runPayment(payOb, res);
+					runPayment(payOb);
 					
 					payOb.status = true;
 					
@@ -81,7 +81,7 @@ public class Payment {
 				User.currUser.pinNum = payOb.pinNum;
 				User.currUser.exDate = payOb.exDate;
 				
-				runPayment(payOb, res);
+				runPayment(payOb);
 				
 				payOb.status = true;
 				
@@ -91,7 +91,7 @@ public class Payment {
 		} catch (Exception e) {e.printStackTrace(); return false;}
 	}
 	
-	public static void runPayment(Payment payOb, HttpServletResponse res) throws IOException {
+	public static void runPayment(Payment payOb) throws IOException {
 		
 		Connection con = null;
 		PreparedStatement stmtU = null;

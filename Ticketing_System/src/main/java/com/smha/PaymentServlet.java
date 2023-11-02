@@ -17,7 +17,7 @@ public class PaymentServlet extends HttpServlet{
 		
 		Payment transaction = new Payment(001, 001, 69.69, req.getParameter("card_number"), Integer.parseInt(req.getParameter("card_pin")), req.getParameter("expiration_date"));
 		
-		boolean paymentStatus = Payment.securityCheck(transaction, res);
+		boolean paymentStatus = Payment.securityCheck(transaction);
 		
 		if (paymentStatus == true) {
 			out.println("Payment Successful!");

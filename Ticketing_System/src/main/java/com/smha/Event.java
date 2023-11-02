@@ -20,9 +20,9 @@ public class Event {
     
     static {
     	Ticket[][] seatMapEx = new Ticket[1][1];
-    	Ticket rowOneSeatOne = new Ticket("001", "CofC M Basketball vs Hofstra", 1, 1, 45.52);
+    	Ticket rowOneSeatOne = new Ticket(1, 13, 1, 1, 45.52, false);
     	seatMapEx[0][0] = rowOneSeatOne;
-    	Event eventEx = new Event(seatMapEx, seatMapEx[0][0].event);
+    	Event eventEx = new Event(seatMapEx, "CofC vs. Hofstra");
     	
     	eventDatabase[0] = eventEx;
     }

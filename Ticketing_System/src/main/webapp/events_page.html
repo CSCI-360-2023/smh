@@ -1,14 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+        h1 {
+            font-size: 36px;
+        }
+        p {
+            font-size: 18px;
+        }
+        #event-details {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        #register-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #register-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
 <body>
-	<h1>Events Page</h1>
-	<p>Search for an event to purchase tickets.</p>
-	<input type="text" name="customer_id" />
-	<form action="." method="post">
-                <input type="hidden" name="action"
-                       value="customer_search">
-<!--                <input type="hidden" name="customer_id"
-                       value="customer_search">-->
-                <input type="submit" value="Search">
+    <header>
+        <h1>Event Name</h1>
+        <p>Date: October 31, 2023</p>
+        <p>Location: Event Venue</p>
+    </header>
+    <div id="event-details">
+        <h2>About the Event</h2>
+        <p>
+            Join us for an exciting event featuring <strong>guest speakers</strong>, <strong>workshops</strong>, and <strong>networking opportunities</strong>.
+            This is an event you won't want to miss!
+        </p>
+        <h2>Event Schedule</h2>
+        <p>
+            <strong>10:00 AM - 11:30 AM:</strong> Keynote Speech<br>
+            <strong>11:45 AM - 1:00 PM:</strong> Workshop Sessions<br>
+            <strong>1:00 PM - 2:00 PM:</strong> Lunch<br>
+            <strong>2:15 PM - 4:30 PM:</strong> Panel Discussions<br>
+            <strong>5:00 PM - 7:00 PM:</strong> Networking Reception
+        </p>
+        <button id="register-button">Register Now</button>
+    </div>
+
+
+    <script>
+        // JavaScript for handling the registration button click
+        document.getElementById("register-button").addEventListener("click", function() {
+            alert("Thank you for registering for the event!");
+        });
+    </script>
 </body>
 </html>

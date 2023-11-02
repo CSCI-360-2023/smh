@@ -3,25 +3,34 @@ package com.smha;
 public class Ticket {
 	Double price;
     int age; // What is the purpose of age?? Excluded from constructor for time being.
-    String event;
-    String ticketID;
-    String status;
+    int event;
+    int ticketID;
+    boolean status; // true = purchased; false = unpurchased
     int row;
     int seat;
-    static Ticket[] ticketDatabase = new Ticket[2];
     
-    public Ticket(String ID, String eventString, int rowNum, int seatNum, Double price) {
+    public Ticket(int ID, int eventID, int rowNum, int seatNum, Double price, boolean status) {
     	ticketID = ID;
-    	event = eventString;
+    	event = eventID;
     	row = rowNum;
     	seat = seatNum;
     	this.price = price;
+    	this.status = status;
     }
 
-    public String lookTicket(String[] eventTickets) {
+    public static int[] lookTickets(int eventID, int[] eventTickets) {
         // looks for selected ticket by user from specific event list containing all ticket IDs
-        String ticketID = "";
-        return ticketID;
+        int[] result = new int[eventTickets.length];
+    	
+        int i = 0;
+    	for (int j = 0; j < eventTickets.length; j++) {
+    		if (eventTickets[i] == eventID) {
+    			result[i] = eventID;
+    			i++;
+    		}
+    	}
+//    	int ticketID = eventTickets[0];
+        return result;
     }
     
     public int returnTickets(String[] ticketInfo){
@@ -48,9 +57,5 @@ public class Ticket {
 
     public void displayTicket() {
         // displays ticket to UI to user 
-    }
-    
-    static {
-    	
     }
 }
