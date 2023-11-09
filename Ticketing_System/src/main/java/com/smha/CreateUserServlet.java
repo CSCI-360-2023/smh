@@ -14,7 +14,7 @@ public class CreateUserServlet extends HttpServlet{
 		
 		PrintWriter out = res.getWriter();
 		
-		boolean userCreated = User.createUser(req.getParameter("username"), req.getParameter("password"), req.getParameter("first_name"), req.getParameter("last_name"), req.getParameter("email"), res);
+		boolean userCreated = User.createUser(req.getParameter("username"), req.getParameter("password"), req.getParameter("first_name"), req.getParameter("last_name"), req.getParameter("email"));
 		
 		if (userCreated == true) {
 			System.out.println("Successful!");

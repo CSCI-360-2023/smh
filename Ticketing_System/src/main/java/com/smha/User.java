@@ -15,7 +15,7 @@ public class User {
     String firstName;
     String lastName;
     String email;
-    Ticket[] cart;
+    Ticket[] cart = new Ticket[0];
     Ticket[] purchasedTickets;
     static User currUser = null;
     String cardNum = null; // 16 digits
@@ -36,8 +36,8 @@ public class User {
     }
     
 
-    public static boolean loginUser(String username, String password, HttpServletResponse res) throws IOException {
-    	PrintWriter out = res.getWriter(); // for printing to page
+    public static boolean loginUser(String username, String password) throws IOException {
+//    	PrintWriter out = res.getWriter(); // for printing to page
 		
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -56,16 +56,15 @@ public class User {
 			rs = stmt.executeQuery();
 			
 			while (rs.next()) {
-				System.out.println("User Found: " + rs.getString("username") + " " + rs.getString("password"));
 				returnUser = new User(rs.getString("username"), rs.getString("password"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("email"));
 			}
 			
 			if (returnUser == null) {
-				out.println("Username or password is incorrect. Try again or create new user.");
+//				out.println("Username or password is incorrect. Try again or create new user.");
 				return false;
 			}
 			else {
-				out.println("Access granted!");
+//				out.println("Access granted!");
 	        	User.currUser = returnUser;
 	        	return true;
 	        }
@@ -75,9 +74,9 @@ public class User {
 		return false;
     }
 
-    public static boolean createUser(String username, String password, String firstName, String lastName, String email, HttpServletResponse res) throws IOException {
+    public static boolean createUser(String username, String password, String firstName, String lastName, String email) throws IOException {
     	
-    	PrintWriter out = res.getWriter();
+//    	PrintWriter out = res.getWriter();
 		
 		Connection con = null;
 		PreparedStatement stmt1 = null;
@@ -98,7 +97,6 @@ public class User {
 			rs = stmt1.executeQuery();
 			
 			while (rs.next()) {
-				System.out.println("Username Found: " + rs.getString("username"));
 				returnUser = new User(rs.getString("username"), rs.getString("password"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("email"));
 			}
 			
@@ -117,35 +115,74 @@ public class User {
 				User newUser = new User(username, password, firstName, lastName, email);
 				User.currUser = newUser;
 				
-				out.println("User created!");
-				out.println("First Name: " + newUser.firstName + " Last Name: " + newUser.lastName + " Username: " + newUser.username);
+//				out.println("User created!");
+//				out.println("First Name: " + newUser.firstName + " Last Name: " + newUser.lastName + " Username: " + newUser.username);
 				
 				return true;
 			}
 			else {
-				out.println("User already exists with that that username or email.");
+//				out.println("User already exists with that that username or email.");
 				return false;
 			}
     	} catch (Exception e) {e.printStackTrace(); return false;}
     }
 
-    public String[] searchEvent(String eventId) {
-        // call event class to get ticket info
-        String[] events = new String[]{"Event1", "Event2"};
-        return events;
-    }
+    
 
     public void addToCart(int ticketID) {
-        // takes selected tickets and adds to cart
+        Ticket ticket = Ticket.searchTicket_by_ID(ticketID);        
+        int size = currUser.cart.length + 1;
+        
+        Ticket[] cart = new Ticket[size];
+        if (size > 1) {
+	        for (int i = 0; i < currUser.cart.length; i++) {
+	        	cart[i] = currUser.cart[i];
+	        }
+	        cart[currUser.cart.length] = ticket;
+        }
+        else {
+        	cart[size - 1] = ticket;
+        }
+        
+        currUser.cart = cart;
     }
-
-    // SHOULD THIS BE HERE??
-    public void purchaseTickets(String[] cart) {
-        // takes cart and purchases the tickets by calling the ticket class
+    
+    public static boolean removeFromCart(int ticketID) {
+    	// removes ticket from currUser.cart
+    	Ticket[] cart = null;
+    	
+    	boolean ticketFound = false;
+    	
+    	// find index in cart to remove
+    	int tickInd = -1;
+    	for (int i = 0; i < currUser.cart.length; i++) {
+    		if (currUser.cart[i].ticketID == ticketID) {
+    			tickInd = i;
+    			ticketFound = true;
+    		}
+    	}
+    	
+    	if (ticketFound) {
+			cart = new Ticket[currUser.cart.length - 1];
+	    	
+	    	for(int i=0, k=0; i < currUser.cart.length; i++){
+	            if(i != tickInd){
+	                cart[k] = currUser.cart[i];
+	                k++;
+	            }
+	        }
+    	
+	    	currUser.cart = cart;
+	    	return ticketFound;
+    	} else {
+    		return ticketFound;
+    	}
     }
 
     public void displayTicket(String[] purchasedTickets) {
         // displays tickets returned after purchasing
+    	
+    	// WAITING FOR UI SOLIDIFICATION
     }
 
 }

@@ -1,6 +1,8 @@
 package com.smha;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
@@ -19,16 +21,26 @@ public class TicketTest {
 	}
 	
 	@Test
-	public void test_lookTicket() {
+	public void test_searchTicket_by_TicketID() {
 		ticket = new Ticket(1, 13, 1, 1, 100.0, false);
-		eventTickets = new int[1];
-		eventTickets[0] = ticket.ticketID;
-		int findEventID = 1;
+		int findEventID = 2;
 		
-		int[] returnVal = Ticket.lookTickets(findEventID, eventTickets);
+		Ticket returnVal = Ticket.searchTicket_by_ID(findEventID);
 		
 		
-		assertEquals(1, returnVal[0]);
+		assertEquals(findEventID, returnVal.ticketID);
+		assertEquals(13, returnVal.event);
+		assertTrue(100.0 == returnVal.price);
+		
+		// TicketID not found
+		boolean foundTicket = (Ticket.searchTicket_by_ID(3) == null);
+		assertTrue(foundTicket);
+	}
+	
+	@Test
+	public void test_getAvailableTickets_by_EventID() {
+		Ticket[] returnTickets = Ticket.getAvailableTickets_by_EventID(13);
+		assertEquals(1, returnTickets[0].ticketID);
 	}
 	
 	@BeforeEach
