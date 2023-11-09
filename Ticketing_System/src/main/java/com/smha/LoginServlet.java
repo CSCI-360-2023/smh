@@ -12,7 +12,7 @@ public class LoginServlet extends HttpServlet{
 			
 			System.out.println("Input User:  username: " + req.getParameter("username") + " " + "password: " + req.getParameter("password"));
 			
-			boolean loggedIn = User.loginUser(logInUser.username, logInUser.password, res);
+			boolean loggedIn = User.loginUser(logInUser.username, logInUser.password);
 			
 			if (loggedIn == true) {
 				System.out.println("Login Successful!");
