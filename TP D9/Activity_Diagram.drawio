@@ -1,0 +1,127 @@
+<mxfile host="app.diagrams.net" modified="2023-11-08T20:18:18.400Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="AIzyvMoD-RP5cK4f32OQ" version="22.0.8" type="google">
+  <diagram name="Page-1" id="xWzRelDYb9qD9d8Pwsjd">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4F-aBBSlxGXOEnNLJ-IF-1" target="4F-aBBSlxGXOEnNLJ-IF-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4F-aBBSlxGXOEnNLJ-IF-1" target="4F-aBBSlxGXOEnNLJ-IF-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-1" value="Start" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="110" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-5" value="FULFILMENT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=23;" vertex="1" parent="1">
+          <mxGeometry x="90" y="20" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-6" value="SYSTEM" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=23;" vertex="1" parent="1">
+          <mxGeometry x="370" y="20" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-8" value="TICKETS" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=23;" vertex="1" parent="1">
+          <mxGeometry x="680" y="20" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4F-aBBSlxGXOEnNLJ-IF-9" target="4F-aBBSlxGXOEnNLJ-IF-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-9" value="user sees event" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="210" width="80" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4F-aBBSlxGXOEnNLJ-IF-11" target="4F-aBBSlxGXOEnNLJ-IF-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4F-aBBSlxGXOEnNLJ-IF-11" target="4F-aBBSlxGXOEnNLJ-IF-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4F-aBBSlxGXOEnNLJ-IF-11" target="4F-aBBSlxGXOEnNLJ-IF-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="360" as="sourcePoint" />
+            <mxPoint x="620" y="420" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="560" y="390" />
+              <mxPoint x="620" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-11" value="event ID" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="320" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-22" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="1100" as="sourcePoint" />
+            <mxPoint x="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-23" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="1100" as="sourcePoint" />
+            <mxPoint x="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-33" value="Intial" style="ellipse;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="60" width="40" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4F-aBBSlxGXOEnNLJ-IF-35" target="4F-aBBSlxGXOEnNLJ-IF-52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-35" value="Event&lt;br&gt;Date/Time" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="420" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4F-aBBSlxGXOEnNLJ-IF-39">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="720" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-39" value="Event Type&amp;nbsp;&lt;br&gt;(Object)" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="420" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4F-aBBSlxGXOEnNLJ-IF-47" target="4F-aBBSlxGXOEnNLJ-IF-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4F-aBBSlxGXOEnNLJ-IF-47" target="4F-aBBSlxGXOEnNLJ-IF-50">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-47" value="Ticket Inventory" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="690" y="520" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4F-aBBSlxGXOEnNLJ-IF-48" target="4F-aBBSlxGXOEnNLJ-IF-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4F-aBBSlxGXOEnNLJ-IF-48" target="4F-aBBSlxGXOEnNLJ-IF-56">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-48" value="Has Tickets" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="590" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-50" value="No Tickets" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="590" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-52" value="Event Price" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="375" y="580" width="75" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-54" value="Timer For Sales&lt;br&gt;(Object)" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="850" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-64" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4F-aBBSlxGXOEnNLJ-IF-56" target="4F-aBBSlxGXOEnNLJ-IF-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-56" value="Created By Users" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="840" width="70" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-62" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="869.5" as="sourcePoint" />
+            <mxPoint x="660" y="869.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4F-aBBSlxGXOEnNLJ-IF-63" value="Has Seat&lt;br&gt;Map" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="930" width="80" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
