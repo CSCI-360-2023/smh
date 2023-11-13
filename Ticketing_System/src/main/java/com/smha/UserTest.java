@@ -46,6 +46,13 @@ public class UserTest {
 		result = User.createUser(user.username, user.password, user.firstName, user.lastName, user.email);
 		
 		assertFalse(result);
+		
+		username = "testuser1";
+		password = "tEsT@40111111088575";
+		
+		result = User.createUser(username, password, "Test", "User", "testuser@test.com");
+		
+		assertFalse(result);
 	}
 	
 	@Test
@@ -102,8 +109,17 @@ public class UserTest {
 		assertFalse(result);
 		assertEquals(4, user.cart.length);
 		assertEquals(1, user.cart[1].ticketID);
-
+	}
+	
+	@Test
+	public void test_passwordCheck() {
+		boolean result = User.passwordCheck("tEsT@4011111111");
 		
+		assertTrue(result);
+		
+		result = User.passwordCheck("123456789@rE");
+		
+		assertFalse(result);
 	}
 	
 	@BeforeEach

@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.*;
 
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -76,8 +77,6 @@ public class User {
 
     public static boolean createUser(String username, String password, String firstName, String lastName, String email) throws IOException {
     	
-//    	PrintWriter out = res.getWriter();
-		
 		Connection con = null;
 		PreparedStatement stmt1 = null;
 		PreparedStatement stmt2 = null;
@@ -100,8 +99,7 @@ public class User {
 				returnUser = new User(rs.getString("username"), rs.getString("password"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("email"));
 			}
 			
-			if (returnUser == null) {
-				System.out.println("Inside if");
+			if (returnUser == null && passwordCheck(password)) {
 				stmt2 = con.prepareStatement("INSERT INTO users (username, password, firstName, lastName, email) VALUES (?, ?, ?, ?, ?)");
 				
 				stmt2.setString(1, username);
@@ -114,9 +112,6 @@ public class User {
 				
 				User newUser = new User(username, password, firstName, lastName, email);
 				User.currUser = newUser;
-				
-//				out.println("User created!");
-//				out.println("First Name: " + newUser.firstName + " Last Name: " + newUser.lastName + " Username: " + newUser.username);
 				
 				return true;
 			}
@@ -177,6 +172,40 @@ public class User {
     	} else {
     		return ticketFound;
     	}
+    }
+    
+    public static boolean passwordCheck(String password) {
+    	boolean length = (password.length() >= 15);
+    	boolean lowerCase = false;
+    	boolean upperCase = false;
+    	boolean number = false;
+    	boolean specialCharacter = false;
+    	
+    	char[] chars = new char[password.length()];
+    	
+    	for (int i = 0; i < chars.length; i++) {
+            chars[i] = password.charAt(i);
+        }
+    	
+    	for (int i = 0; i < chars.length; i++) {
+    		if (Character.isDigit(chars[i])) {
+    			number = true;
+    		}
+    		else if (Character.isLetter(chars[i])) {
+    			if (chars[i] == Character.toLowerCase(chars[i])) {
+    				lowerCase = true;
+    			}
+				else if (chars[i] == Character.toUpperCase(chars[i])) {
+	    			upperCase = true;
+	    		}
+    		}
+    		else {
+    			specialCharacter = true;
+    		}
+    	}
+    	
+    	
+    	return length && lowerCase && upperCase && number && specialCharacter;
     }
 
     public void displayTicket(String[] purchasedTickets) {
