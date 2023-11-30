@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0; 
+        }
+
+        .top-line {
+            background-color: #800000;
+            height: 5px; 
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .form-container h1 {
+            color: #800000;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            border: none;
+            border-bottom: 1px solid #000;
+            padding: 8px;
+            box-sizing: border-box;
+            transition: border-bottom 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-bottom: 2px solid #4CAF50;
+        }
+
+        .form-group.inline {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .form-group.inline input {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #800000;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5d001e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-line"></div>
+    
+    <div class="form-container">
+        <h1>Payment</h1>
+        <hr>
+        <form>
+            <div class="form-group inline">
+                <label for="cardName">Card Name:</label>
+                <input type="text" id="cardName" name="cardName" required>
+            </div>
+
+            <div class="form-group inline">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" name="cardNumber" required>
+            </div>
+
+            <div class="form-group inline">
+                <label for="zipcode">Zipcode:</label>
+                <input type="text" id="zipcode" name="zipcode" required>
+            </div>
+
+            <div class="form-group inline">
+                <label for="pinNumber">PIN Number:</label>
+                <input type="password" id="pinNumber" name="pinNumber" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
+
