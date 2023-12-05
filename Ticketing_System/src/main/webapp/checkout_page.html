@@ -1,0 +1,135 @@
+<!-- shopping_cart.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        header {
+            background-color: #800000;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+        p {
+            font-size: 18px;
+            margin: 0;
+        }
+        #cart-details {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .cart-item {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button id="back-button" onclick="goBack()">Back</button>
+        <div>
+            <h1>Shopping Cart</h1>
+            <p></p>
+            <p></p>
+        </div>
+        <button id="logout-button" onclick="logout()">Logout</button>
+    </header>
+    <div id="cart-details">
+        <!-- JavaScript will populate this section -->
+    </div>
+    <button id="checkout-button" onclick="checkout()">Checkout</button>
+
+    <script>
+        // Dummy data for the shopping cart (replace with actual data)
+
+        var shoppingCart = [
+            { 
+                eventName: "Rhode Island Rams at College of Charleston Cougars Mens Basketball",
+                eventDateTime: "Dec 10 at 2:00pm",
+                ticketsPurchased: 4,
+                rowNumber: "A",
+                //seatNumber: 10,
+                price: 127.00 
+            },
+            { 
+                eventName: "The Citadel Bulldogs at College of Charleston Cougars Mens Basketball",
+                eventDateTime: "Dec 15 at 7:30pm",
+                ticketsPurchased: 2,
+                rowNumber: "B",
+                //seatNumber: 5,
+                price: 75.00 
+            }
+        ];
+
+        // JavaScript for displaying items in the shopping cart
+        function displayCartItems() {
+            var cartDetailsDiv = document.getElementById("cart-details");
+            cartDetailsDiv.innerHTML = "";
+
+            var totalTickets = 0;
+            var totalPrice = 0;
+
+            shoppingCart.forEach(function(item) {
+                var cartItem = document.createElement("div");
+                cartItem.classList.add("cart-item");
+                cartItem.innerHTML = "<h2>" + item.eventName + "</h2>" +
+                                     "<p>Date & Time: " + item.eventDateTime + "</p>" +
+                                     "<p>Tickets: $" + item.price.toFixed(2) + " x " + item.ticketsPurchased + "</p>" +
+                                     "<p>Row Number: " + item.rowNumber + "</p>" +
+                                     //"<p>Seat Number: " + item.seatNumber + "</p>" +
+                                     "<p>Total: $" + (item.price * item.ticketsPurchased).toFixed(2) + "</p>";
+
+                cartDetailsDiv.appendChild(cartItem);
+
+                // Update total tickets and total price
+                totalTickets += item.ticketsPurchased;
+                totalPrice += item.price * item.ticketsPurchased;
+            });
+
+            // Display total tickets and total price
+            cartDetailsDiv.innerHTML += "<p>Total Tickets Purchased: " + totalTickets + "</p>" +
+                                        "<p>Total Price: $" + totalPrice.toFixed(2) + "</p>";
+        }
+
+        // JavaScript for the checkout button
+        function checkout() {
+            // Add checkout navi code here to go to payment form
+            alert("Proceeding to Checkout");
+        }
+
+        // JavaScript for the back button
+        function goBack() {
+            // Add back button navi code here to home page
+            alert("Going back to Home Page");
+        }
+
+        // JavaScript for the logout button
+        function logout() {
+            // Add logout button navi code here
+            alert("Logout clicked!");
+        }
+
+        // Initial display of shopping cart items
+        displayCartItems();
+    </script>
+</body>
+</html>
