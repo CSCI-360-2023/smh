@@ -53,7 +53,8 @@
             <p></p>
             <p></p>
         </div>
-        <button id="logout-button">Logout</button>
+        <button id="checkout-button" onclick="checkout()">Checkout</button>
+        <button id="logout-button" onclick="logout()">Logout</button>
     </header>
     <div id="search-bar">
         <label for="search">Search Event:</label>
@@ -64,12 +65,6 @@
     </div>
 
     <script>
-        // JavaScript for handling the logout button click
-        document.getElementById("logout-button").addEventListener("click", function() {
-            // Add logout logic here
-            alert("Logout clicked!");
-        });
-
         // Dummy data for events (replace with actual data)
         var events = [
             { name: "Event 1", venue: "Venue 1", department: "Department 1" },
@@ -97,15 +92,27 @@
                 eventBox.innerHTML = "<h2>" + event.name + "</h2>" +
                                      "<p>Venue: " + event.venue + "</p>" +
                                      "<p>Hosted by: " + event.department + "</p>" +
-                                     "<button onclick='redirectToSeatMap()'>Seat Map</button>";
+                                     "<button>Add to Cart</button>";
 
                 eventDetailsDiv.appendChild(eventBox);
             });
         }
 
-        // Dummy function for redirecting to seat map (replace with actual logic)
-        function redirectToSeatMap() {
-            alert("Redirecting to Seat Map");
+        // // Dummy function for redirecting to seat map (replace with actual logic)
+        // function redirectToSeatMap() {
+        //     alert("Redirecting to Seat Map");
+        // }
+
+        // JavaScript for the checkout button
+        function checkout() {
+            // Add checkout navi code here to go to payment form
+            alert("Proceeding to Checkout");
+        }
+
+        // JavaScript for the logout button
+        function logout() {
+            // Add logout button navi code here
+            alert("Logout clicked!");
         }
 
         // Initial display of events
