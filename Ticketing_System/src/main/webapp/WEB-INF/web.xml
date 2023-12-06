@@ -30,4 +30,64 @@
   	<servlet-name>payment</servlet-name>
   	<url-pattern>/payment</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>log_out</servlet-name>
+  	<servlet-class>com.smha.LogoutServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>log_out</servlet-name>
+  	<url-pattern>/log_out</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>add_to_cart</servlet-name>
+  	<servlet-class>com.smha.AddToCartServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>add_to_cart</servlet-name>
+  	<url-pattern>/add_to_cart</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>view_cart</servlet-name>
+  	<servlet-class>com.smha.ViewCartServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>view_cart</servlet-name>
+  	<url-pattern>/view_cart</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>remove_from_cart</servlet-name>
+  	<servlet-class>com.smha.RemoveFromCartServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>remove_from_cart</servlet-name>
+  	<url-pattern>/remove_from_cart</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>show_payment</servlet-name>
+  	<servlet-class>com.smha.ShowPaymentServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>show_payment</servlet-name>
+  	<url-pattern>/show_payment</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>view_purchased_tickets</servlet-name>
+  	<servlet-class>com.smha.ViewPurchasedTicketsServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>view_purchased_tickets</servlet-name>
+  	<url-pattern>/view_purchased_tickets</url-pattern>
+  </servlet-mapping>
 </web-app>

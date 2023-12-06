@@ -10,18 +10,15 @@ import java.sql.ResultSet;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class Payment {
-	int paymentID; // random int
-	int eventID;
-	int ticketID;
+	Ticket[] tickets;
 	double amount;
 	String cardNum;
 	int pinNum;
 	String exDate;
 	boolean status; // accepted = true; declined = false
 	
-	public Payment(int eventID, int ticketID, double amount, String cardNum, int pinNum, String exDate) {
-		this.eventID = eventID;
-		this.ticketID = ticketID;
+	public Payment(Ticket[] tickets, double amount, String cardNum, int pinNum, String exDate) {
+		this.tickets = tickets;
 		this.amount = amount;
 		this.cardNum = cardNum;
 		this.pinNum = pinNum;
@@ -96,6 +93,7 @@ public class Payment {
 		Connection con = null;
 		PreparedStatement stmtU = null;
 		PreparedStatement stmtT = null;
+		PreparedStatement stmtS = null;
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -111,17 +109,27 @@ public class Payment {
 			
 			stmtU.executeUpdate();
 			
-			stmtT = con.prepareStatement("INSERT INTO transactions (username, eventID, ticketID, amount, cardNum, pinNum, exDate) VALUES (?, ?, ?, ?, ?, ?, ?)");
+			for (Ticket ticket : payOb.tickets) {
+				stmtT = con.prepareStatement("INSERT INTO transactions (username, eventID, ticketID, amount, cardNum, pinNum, exDate) VALUES (?, ?, ?, ?, ?, ?, ?)");
+				
+				stmtT.setString(1, User.currUser.username);
+				stmtT.setInt(2, ticket.event);
+				stmtT.setInt(3, ticket.ticketID);
+				stmtT.setDouble(4, payOb.amount);
+				stmtT.setString(5, payOb.cardNum);
+				stmtT.setInt(6, payOb.pinNum);
+				stmtT.setString(7, payOb.exDate);
+				
+				stmtT.executeUpdate();
+				
+				stmtS = con.prepareStatement("UPDATE tickets SET status = 1 and owner = 2 WHERE ticketID = ?");
+				
+				stmtS.setInt(1, ticket.ticketID);
+				stmtS.setString(2, User.currUser.username);
+				
+				stmtS.executeUpdate();
+			}
 			
-			stmtT.setString(1, User.currUser.username);
-			stmtT.setInt(2, payOb.eventID);
-			stmtT.setInt(3, payOb.ticketID);
-			stmtT.setDouble(4, payOb.amount);
-			stmtT.setString(5, payOb.cardNum);
-			stmtT.setInt(6, payOb.pinNum);
-			stmtT.setString(7, payOb.exDate);
-			
-			stmtT.executeUpdate();
 			
 		} catch (Exception e) {e.printStackTrace();}
 	}

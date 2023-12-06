@@ -71,7 +71,7 @@ public class Ticket {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			// changes depending on your server
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3309/ticketing_system", "root", "1234");
-			stmt = con.prepareStatement("SELECT * FROM tickets where eventID = ?");
+			stmt = con.prepareStatement("SELECT * FROM tickets where eventID = ? and status = 0");
 			
 			stmt.setInt(1, eventID);
 			
@@ -104,29 +104,72 @@ public class Ticket {
 		return null;	
     }
     
-    public int returnTickets(String[] ticketInfo){
-        // returns number of tickets available
-        int numTickets = 0;
-        return numTickets;
+    public static Ticket[] get_tickets_by_username(String username) {
+    	Ticket[] purchasedTickets = null;
+    	
+    	Connection con = null;
+    	PreparedStatement stmt = null;
+    	ResultSet rs = null;
+    	
+    	try {
+    		Class.forName("com.mysql.cj.jdbc.Driver");
+			// changes depending on your server
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3309/ticketing_system", "root", "1234");
+			stmt = con.prepareStatement("SELECT * FROM tickets where owner = ? and status = 1");
+			
+			stmt.setString(1, username);
+			
+			rs = stmt.executeQuery();
+			
+			int size = 0;
+			if (rs != null) {
+				while (rs.next()) {
+					size++;
+				}
+				
+				rs = stmt.executeQuery();
+				
+				purchasedTickets = new Ticket[size];
+				
+				int i = 0;
+				while (rs.next()) {
+					purchasedTickets[i] = new Ticket(rs.getInt("ticketID"), rs.getInt("eventID"), rs.getInt("rowNum"), rs.getInt("seatNum"), rs.getDouble("price"), rs.getBoolean("status"));
+					i++;
+				}
+				
+				return purchasedTickets;
+			}
+			else {
+				return null;
+			}
+			
+    	} catch (Exception e) {e.printStackTrace();}
+    	
+    	return null;
     }
-
-    // Done in Payment Class
-    public boolean purchaseTicket(String ticketID) {
-        // ticket will be ready for purchase to be called by user class
-        boolean ready = true;
-        return ready;
+    
+    public static int get_ticketID(Ticket ticket) {
+    	return ticket.ticketID;
     }
-
-    public void updateInventory(String[] ticketsAvailable) {
-        // updates the number of tickets available by decreasing after purchasing
+    
+    public static int get_eventID(Ticket ticket) {
+    	return ticket.event;
     }
-
-    public boolean confirmation() {
-        // confirms tickets has been purchased
-        return true;
+    
+    public static String get_eventName(Ticket ticket) {
+    	return Event.get_eventName_by_eventID(ticket.event);
     }
-
-    public void displayTicket() {
-        // displays ticket to UI to user 
+    
+    public static double get_Price(Ticket ticket) {
+    	return ticket.price;
     }
+    
+    public static int get_Row(Ticket ticket) {
+    	return ticket.row;
+    }
+    
+    public static int get_Seat(Ticket ticket) {
+    	return ticket.seat;
+    }
+    
 }

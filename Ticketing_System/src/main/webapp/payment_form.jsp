@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.smha.User" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,26 +10,24 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin: 0; 
+            margin: 0;
         }
 
         .top-line {
-            background-color: #800000;
-            height: 10px; /* Increase the height for a box-like appearance */
             display: flex;
-            justify-content: center; /* Center the box horizontally */
-            align-items: center; /* Center the box vertically */
+            justify-content: center;
+            align-items: center;
         }
 
         .box {
-            width: 50px; /* Set the width of the box */
-            height: 5px; /* Set the height of the box */
-            background-color: white; /* Set the background color */
+            width: 100%;
+            height: 20px;
+            background-color: #800000; /* Set the background color to match the top line */
         }
 
         .form-container {
-            max-width: 600px;
-            margin: 75px;
+            max-width: 400px;
+            margin: 20px auto;
             border: 1px solid #ccc;
             padding: 20px;
             border-radius: 8px;
@@ -96,19 +96,26 @@
     <div class="form-container">
         <h1>Payment</h1>
         <hr>
-        <form action="payment">
-			<div>
-				<label>Toatal Price: 	</label>
-			</div>
-			
+        <h2>Total Price (incl. tax): <b>$<%=User.get_currUser_cart_total() %></b> </h2>
+        <form action="payment" method="post" id="aligned">
             <div class="form-group inline">
                 <label for="cardName">Name on card:</label>
                 <input type="text" id="cardName" name="cardName" required>
             </div>
 
             <div class="form-group inline">
-                <label for="cardNumber">Card Number:</label>
-                <input type="text" id="cardNumber" name="cardNumber" required>
+                <label for="card_number">Card Number:</label>
+                <input type="text" id="card_number" name="card_number" required>
+            </div>
+            
+            <div class="form-group inline">
+                <label for="card_pin">PIN Number:</label>
+                <input type="password" id="card_pin" name="card_pin" required>
+            </div>
+            
+            <div class="form-group inline">
+                <label for="expiration_date">Ex-Date:</label>
+                <input type="month" id="expiration_date" name="expiration_date" required>
             </div>
 
             <div class="form-group inline">
@@ -116,17 +123,8 @@
                 <input type="text" id="zipcode" name="zipcode" required>
             </div>
 
-            <div class="form-group inline">
-                <label for="exDate">Ex-Date:</label>
-                <input type="month" id="exDate" name="exDate" required>
-            </div>
-            
-            <div class="form-group inline">
-                <label for="pinNumber">PIN Number:</label>
-                <input type="password" id="pinNumber" name="pinNumber" required>
-            </div>
-
-            <button type="submit">Submit Payment</button>
+			<input type="hidden" id="total" name="total" value="<%=User.get_currUser_cart_total() %>">
+            <button type="submit">Submit</button>
         </form>
     </div>
 

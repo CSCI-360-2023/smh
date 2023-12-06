@@ -14,15 +14,26 @@ public class CreateUserServlet extends HttpServlet{
 		
 		PrintWriter out = res.getWriter();
 		
-		boolean userCreated = User.createUser(req.getParameter("username"), req.getParameter("password"), req.getParameter("first_name"), req.getParameter("last_name"), req.getParameter("email"));
+		boolean passwordEquals = req.getParameter("password").equals(req.getParameter("confirmPassword"));
+		boolean emailEquals = req.getParameter("email").equals(req.getParameter("confirmEmail"));
 		
-		if (userCreated == true) {
-			System.out.println("Successful!");
-			res.sendRedirect("events_page.html");
-		}
-		else {
-			System.out.println("Failed.");
-			res.sendRedirect("create_user_form.html");
+		if (!passwordEquals && !emailEquals) {
+			out.println("Passwords and emails must match!");
+		} else if (!passwordEquals) {
+			out.println("Passwords must match!");
+		} else if (!emailEquals) {
+			out.println("Emails must match!");
+		} else {
+			boolean userCreated = User.createUser(req.getParameter("username"), req.getParameter("password"), req.getParameter("firstName"), req.getParameter("lastName"), req.getParameter("email"));
+			
+			if (userCreated == true) {
+				System.out.println("Successful!");
+				res.sendRedirect("events_page.html");
+			}
+			else {
+				System.out.println("Failed.");
+				res.sendRedirect("create_user_form.html");
+			}
 		}
 	}
 }

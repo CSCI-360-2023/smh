@@ -54,5 +54,16 @@ public class EventTest {
 		assertEquals(events[1].seatMap[0][14].seat, 15);
 		assertEquals(events[1].seatMap[0][14].ticketID, 5);
 	}
+	
+	@Test
+	public void test_get_eventID_by_eventName() {
+		int eventID = Event.get_eventID_by_eventName("CofC vs. Iona M Basketball");
+		
+		assertEquals(13, eventID);
+		
+		eventID = Event.get_eventID_by_eventName("Violet Play");
+		
+		assertEquals(14, eventID);
+	}
 
 }

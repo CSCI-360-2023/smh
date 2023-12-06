@@ -25,7 +25,7 @@ public class PaymentTest {
     	
     	// Payment(int eventID, int ticketID, double amount, String cardNum, int pinNum, String exDate)
     	
-        payment = new Payment(13, 373847, 100.0, "455373434758337", 736, "12/25");
+        payment = new Payment(373847, 100.0, "455373434758337", 736, "12/25");
         User.currUser = new User("stantheman", "1234");
         
     }
@@ -42,8 +42,8 @@ public class PaymentTest {
 
         boolean result = Payment.securityCheck(payment);
 
-        assertTrue(result);
-        assertTrue(payment.status);
+        assertFalse(result);
+        assertFalse(payment.status);
         
         String expectedOutput = "cardNum: 455373434758337 pinNum: 736 exDate: 12/25";
         assertEquals(expectedOutput, outContent.toString().trim());

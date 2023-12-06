@@ -15,17 +15,17 @@ public class PaymentServlet extends HttpServlet{
 		
 		PrintWriter out = res.getWriter();
 		
-		Payment transaction = new Payment(001, 001, 69.69, req.getParameter("card_number"), Integer.parseInt(req.getParameter("card_pin")), req.getParameter("expiration_date"));
+		Payment transaction = new Payment(User.currUser.cart, Double.parseDouble(req.getParameter("total")), req.getParameter("card_number"), Integer.parseInt(req.getParameter("card_pin")), req.getParameter("expiration_date"));
 		
 		boolean paymentStatus = Payment.securityCheck(transaction);
 		
 		if (paymentStatus == true) {
-			out.println("Payment Successful!");
+			System.out.println("Payment Successful!");
 			res.sendRedirect("payment_confirm.html");
 		}
 		else {
-			out.println("Payment failed.");
-			res.sendRedirect("payment_form.html");
+			System.out.println("Payment failed.");
+			res.sendRedirect("payment_form.jsp");
 		}
 	}
 }

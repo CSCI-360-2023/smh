@@ -45,6 +45,14 @@ public class TicketTest {
 		assertEquals(13, returnTickets[0].event);
 	}
 	
+	@Test
+	public void test_get_tickets_by_username() {
+		Ticket[] tickets = Ticket.get_tickets_by_username("ahusted");
+		assertEquals(1, tickets[0].ticketID);
+		assertEquals(5, tickets[1].ticketID);
+		assertEquals(6, tickets[2].ticketID);
+	}
+	
 	@BeforeEach
     public void resetTicketStatus() {
         // Reset the payment status to false before each test

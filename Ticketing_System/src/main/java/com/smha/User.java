@@ -98,7 +98,7 @@ public class User {
 			while (rs.next()) {
 				returnUser = new User(rs.getString("username"), rs.getString("password"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("email"));
 			}
-			
+						
 			if (returnUser == null && passwordCheck(password)) {
 				stmt2 = con.prepareStatement("INSERT INTO users (username, password, firstName, lastName, email) VALUES (?, ?, ?, ?, ?)");
 				
@@ -124,7 +124,7 @@ public class User {
 
     
 
-    public void addToCart(int ticketID) {
+    public static void addToCart(int ticketID) {
         Ticket ticket = Ticket.searchTicket_by_ID(ticketID);        
         int size = currUser.cart.length + 1;
         
@@ -208,10 +208,25 @@ public class User {
     	return length && lowerCase && upperCase && number && specialCharacter;
     }
 
-    public void displayTicket(String[] purchasedTickets) {
-        // displays tickets returned after purchasing
+    public static Ticket[] get_currUser_cart() {
+    	return User.currUser.cart;
+    }
+    
+    public static double get_currUser_cart_total() {
+    	Ticket[] cart = get_currUser_cart();
+    	double taxPer = .06;
     	
-    	// WAITING FOR UI SOLIDIFICATION
+    	double sum = 0;
+    	for (Ticket ticket : cart) { 
+    		sum += ticket.price;
+    	}
+    	
+    	return sum + Math.round(sum * taxPer);
+    	
+    }
+    
+    public static String get_currUser_username() {
+    	return User.currUser.username;
     }
 
 }

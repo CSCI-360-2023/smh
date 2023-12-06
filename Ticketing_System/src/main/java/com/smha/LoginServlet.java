@@ -16,7 +16,7 @@ public class LoginServlet extends HttpServlet{
 			
 			if (loggedIn == true) {
 				System.out.println("Login Successful!");
-				res.sendRedirect("events_page.html");
+				res.sendRedirect("events_page.jsp");
 			}
 			else {
 				System.out.println("Login Failed.");

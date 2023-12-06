@@ -62,14 +62,14 @@ public class UserTest {
 		
 		int ticketID = 4;
 		
-		user.addToCart(ticketID);
+		User.addToCart(ticketID);
 		
 		assertEquals(User.currUser.cart[0].ticketID, 4);
 		assertEquals(User.currUser.cart[0].event, 13);
 		
 		ticketID = 6;
 		
-		user.addToCart(ticketID);
+		User.addToCart(ticketID);
 		
 		assertEquals(User.currUser.cart[1].ticketID, 6);
 		assertEquals(User.currUser.cart[1].event, 14);
@@ -83,9 +83,9 @@ public class UserTest {
 		User.currUser.cart = new Ticket[0];
 		
 		int ticketID = 4;
-		user.addToCart(ticketID);
+		User.addToCart(ticketID);
 		ticketID = 6;
-		user.addToCart(ticketID);
+		User.addToCart(ticketID);
 		
 		boolean result = User.removeFromCart(ticketID);
 		
@@ -93,10 +93,10 @@ public class UserTest {
 		assertEquals(1, user.cart.length);
 		assertEquals(4, user.cart[0].ticketID);
 		
-		user.addToCart(1);
-		user.addToCart(2);
-		user.addToCart(3);
-		user.addToCart(6);
+		User.addToCart(1);
+		User.addToCart(2);
+		User.addToCart(3);
+		User.addToCart(6);
 		
 		result = User.removeFromCart(2);
 				
@@ -120,6 +120,22 @@ public class UserTest {
 		result = User.passwordCheck("123456789@rE");
 		
 		assertFalse(result);
+	}
+	
+	@Test
+	public void test_get_currUser_cart() {
+		user = new User("ahusted", "1234@", "Adam", "Husted", "hustedaa@g.cofc.edu");
+		User.currUser = user;
+		
+		User.addToCart(1);
+		User.addToCart(2);
+		User.addToCart(3);
+		User.addToCart(6);
+		
+		Ticket[] testCart = User.get_currUser_cart();
+		
+		assertEquals(testCart.length, 4);
+		assertEquals(testCart[0].event, 13);
 	}
 	
 	@BeforeEach

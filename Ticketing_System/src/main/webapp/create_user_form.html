@@ -1,26 +1,147 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account</title>
+<style>
+  body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+  }
+  .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+  }
+  h2 {
+      background-color: #a52a2a; 
+      color: white;
+      padding: 10px;
+      text-align: center;
+  }
+  .form-section {
+      background: #eee;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-bottom: 10px;
+  }
+  .form-section h3 {
+      background-color: #800000; 
+      color: white;
+      padding: 5px 10px;
+      margin: -10px -10px 10px -10px;
+  }
+  label {
+      display: block;
+      margin-top: 10px;
+  }
+  input[type='text'],
+  input[type='email'],
+  input[type='password'] {
+      width: calc(100% - 20px);
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+  }
+  .note {
+      font-size: 0.9em;
+      color: #333;
+  }
+  .radio-group label {
+      display: inline-block;
+      margin-right: 10px;
+  }
+  .radio-group input[type='radio'] {
+      margin-right: 5px;
+  }
+    .button-container {
+      overflow: hidden; 
+      padding: 10px 0; 
+  }
+  .button-container button {
+      padding: 10px 20px; 
+      border: 1px solid #ccc; 
+      background-color: #f4f4f4; 
+      cursor: pointer; 
+  }
+  .button-container button[type="submit"] {
+      float: right; 
+      background-color: #a52a2a; 
+      color: white; 
+  }
+  .button-container button[type="button"] {
+      float: left; 
+      background-color: #ddd; 
+  }
+</style>
+</head>
 <body>
-	<h1>Create User</h1>
-	<form action="create_user" method="post" id="aligned">
-		<label for="First Name:">First Name:</label>
-	    <input type="text" id="first_name" name="first_name" required><br>
-	    
-	    <label for="Last Name:">Last Name:</label>
-	    <input type="text" id="last_name" name="last_name" required><br>
-	    
-	    <label for="username">Username:</label>
-	    <input type="text" id="username" name="username" required><br>
-	    
-	    <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+<form action="create_user" method="post" id="aligned">
+<div class="container">
+    <h2>New Account</h2>
+    <div class="form-section">
+        <h3>Your Information</h3>
         
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required><br><br>
-	    
-		<input type="submit" value="Create User">
-    </form><br>
-    <a href="index.html">Log In</a>
+        <label for="firstName">* First Name</label>
+        <input type="text" id="firstName" name="firstName" required>
+        
+        <label for="lastName">* Last Name</label>
+        <input type="text" id="lastName" name="lastName" required>
+        
+        <label for="Username">* Username</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="email">* Email</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="confirmEmail">* Confirm Email</label>
+        <input type="email" id="confirmEmail" name="confirmEmail" required>
+        
+        <label for="password">* Password</label>
+        <input type="password" id="password" name="password" required>
+        
+        <label for="confirmPassword">* Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        
+    </div>
+
+  <!-- <script>
+function formatPhoneNumber(inputField) {
+    var cleaned = inputField.value.replace(/\D/g, ''); // Remove all non-digit characters
+    var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/); // Check if the input matches the pattern 
+of a phone number
+    if (match) {
+        inputField.value = match[1] + '-' + match[2] + '-' + match[3]; // Reformat to the desired 
+phone number format
+    }
+}
+</script>
+    
+    <div class="form-section">
+    <h3>Phone Number</h3>
+    <input type="text" id="cell" onkeyup="formatPhoneNumber(this);"> -->
+</div>
+        
+    
+        
+    
+    
+    <!-- Add any other form sections you need here -->
+    
+  <div class="container">
+    <!-- Form content... -->
+    <div class="button-container">
+		<a href="index.html">
+        	<button type="button">Back to Login</button>
+        </a>
+        <button type="submit">Create Account</button>
+    </div>
+</div>
+</form>
 </body>
 </html>
