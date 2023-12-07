@@ -28,7 +28,7 @@ public class CreateUserServlet extends HttpServlet{
 			
 			if (userCreated == true) {
 				System.out.println("Successful!");
-				res.sendRedirect("events_page.html");
+				res.sendRedirect("events_page.jsp");
 			}
 			else {
 				System.out.println("Failed.");
