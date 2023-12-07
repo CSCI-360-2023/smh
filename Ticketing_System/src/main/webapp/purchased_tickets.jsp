@@ -78,8 +78,10 @@
 </head>
 <body>
 
-	<%!
-		Ticket[] purchasedTickets = Ticket.get_tickets_by_username(User.get_currUser_username());
+	<%
+		String username = User.get_currUser_username();
+		
+		Ticket[] purchasedTickets = Ticket.get_tickets_by_username(username);
 	%>
 
 <div class="page-header">

@@ -37,6 +37,14 @@
             justify-content: space-between;
             border-radius: 5px;
         }
+
+        /* New CSS for centering */
+        #checkout-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px; /* Add some spacing between the cart and the centered elements */
+        }
     </style>
 </head>
 <body>
@@ -83,12 +91,17 @@
             displayTickets(tickets);
         </script>
     </section>
-    
-    <a href="events_page.jsp">Back to Events</a>
-    
-    <form action="show_payment" method="post">
-        <button type="submit">Checkout</button>
-    </form>
+
+    <!-- Container for centering -->
+    <div id="checkout-container">
+        <form action="show_payment" method="post" id="aligned">
+            <button type="submit">Checkout</button>
+        </form>
+        
+        <br>
+        
+        <button onclick="history.back()" class="back-button">Back</button>
+    </div>
 
 </body>
 </html>

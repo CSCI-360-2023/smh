@@ -95,6 +95,8 @@ public class Payment {
 		PreparedStatement stmtT = null;
 		PreparedStatement stmtS = null;
 		
+		String username = User.currUser.username;
+		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
     		// changes depending on your server
@@ -110,9 +112,14 @@ public class Payment {
 			stmtU.executeUpdate();
 			
 			for (Ticket ticket : payOb.tickets) {
+				System.out.println(ticket.ticketID);
+			}
+			
+			
+			for (Ticket ticket : payOb.tickets) {
 				stmtT = con.prepareStatement("INSERT INTO transactions (username, eventID, ticketID, amount, cardNum, pinNum, exDate) VALUES (?, ?, ?, ?, ?, ?, ?)");
 				
-				stmtT.setString(1, User.currUser.username);
+				stmtT.setString(1, username);
 				stmtT.setInt(2, ticket.event);
 				stmtT.setInt(3, ticket.ticketID);
 				stmtT.setDouble(4, payOb.amount);
@@ -122,10 +129,10 @@ public class Payment {
 				
 				stmtT.executeUpdate();
 				
-				stmtS = con.prepareStatement("UPDATE tickets SET status = 1 and owner = 2 WHERE ticketID = ?");
+				stmtS = con.prepareStatement("UPDATE tickets SET status = 1, owner = ? WHERE ticketID = ?");
 				
-				stmtS.setInt(1, ticket.ticketID);
-				stmtS.setString(2, User.currUser.username);
+				stmtS.setString(1, username);
+				stmtS.setInt(2, ticket.ticketID);
 				
 				stmtS.executeUpdate();
 			}

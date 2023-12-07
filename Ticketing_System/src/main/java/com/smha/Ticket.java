@@ -115,7 +115,7 @@ public class Ticket {
     		Class.forName("com.mysql.cj.jdbc.Driver");
 			// changes depending on your server
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3309/ticketing_system", "root", "1234");
-			stmt = con.prepareStatement("SELECT * FROM tickets where owner = ? and status = 1");
+			stmt = con.prepareStatement("SELECT * FROM tickets WHERE owner = ? and status = 1");
 			
 			stmt.setString(1, username);
 			
@@ -135,6 +135,11 @@ public class Ticket {
 				while (rs.next()) {
 					purchasedTickets[i] = new Ticket(rs.getInt("ticketID"), rs.getInt("eventID"), rs.getInt("rowNum"), rs.getInt("seatNum"), rs.getDouble("price"), rs.getBoolean("status"));
 					i++;
+				}
+				
+				// For debugging
+				for (Ticket ticket : purchasedTickets) {
+					System.out.println("Ticket ID: " + ticket.ticketID);
 				}
 				
 				return purchasedTickets;
